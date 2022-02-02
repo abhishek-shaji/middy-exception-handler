@@ -1,4 +1,5 @@
-import { BaseException } from './exceptions/BaseException';
+import { HttpException } from './exceptions/HttpException';
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 export const exceptionHandler = ({ logger = console, level = 'error' } = {}) => ({
   onError: async (handler): Promise<any> => {
@@ -10,7 +11,7 @@ export const exceptionHandler = ({ logger = console, level = 'error' } = {}) => 
       });
     }
 
-    if (error instanceof BaseException) {
+    if (error instanceof HttpException) {
       const { statusCode, message } = error;
       handler.response = {
         ...handler.response,
@@ -21,7 +22,10 @@ export const exceptionHandler = ({ logger = console, level = 'error' } = {}) => 
       handler.response = {
         ...handler.response,
         statusCode: 500,
-        body: JSON.stringify({ status: 500, message: 'Internal Server Error' }),
+        body: JSON.stringify({
+          status: StatusCodes.INTERNAL_SERVER_ERROR,
+          message: ReasonPhrases.INTERNAL_SERVER_ERROR,
+        }),
       };
     }
   },
