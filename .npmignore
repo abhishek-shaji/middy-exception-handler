@@ -1,0 +1,5 @@
+src
+.parcel-cache
+node_modules
+.prettierrc
+.idea

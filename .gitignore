@@ -1,0 +1,11 @@
+# Node Modules
+node_modules
+
+# Build Files
+dist
+
+# Parcel Cache
+.parcel-cache
+
+# Intellij Files
+.idea
