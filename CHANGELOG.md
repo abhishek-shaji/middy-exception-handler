@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.4.1...v1.4.2) (2022-02-04)
+
+
+### Bug Fixes
+
+* **disable-sourcemaps:** disable sourcemaps for parcel build ([8f379be](https://github.com/abhishek-shaji/middy-exception-handler/commit/8f379be01aaf5a0ccbdd2b2489a4ec80bcd0c235))
+
 ## [1.4.1](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.4.0...v1.4.1) (2022-02-04)
 
 
