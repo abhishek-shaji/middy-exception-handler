@@ -1,7 +1,6 @@
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 import { HttpException } from '../exceptions/HttpException';
-import { ResponseBody } from '../types/common';
 
 export const formatResponse = (
   { includeTimestamp, includeExceptionName },
@@ -10,18 +9,17 @@ export const formatResponse = (
 ) => {
   if (error instanceof HttpException) {
     const { message } = error;
-    const body: ResponseBody = {
-      timestamp: includeTimestamp ? error.getTimeStamp() : undefined,
-      status: error.getStatusCode(),
-      exception: includeExceptionName ? error.getExceptionName() : undefined,
-      message,
-      details: error.getDetails(),
-    };
 
     return {
       ...response,
       statusCode: error.getStatusCode(),
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        timestamp: includeTimestamp ? error.getTimeStamp() : undefined,
+        status: error.getStatusCode(),
+        exception: includeExceptionName ? error.getExceptionName() : undefined,
+        message,
+        details: error.getDetails(),
+      }),
     };
   }
 

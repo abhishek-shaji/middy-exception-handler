@@ -1,5 +1,11 @@
 import { formatResponse } from './utils/formatResponse';
-import { ExceptionHandlerConfig } from './types/common';
+
+interface ExceptionHandlerConfig {
+  logger: any | Console;
+  level: string;
+  includeTimestamp: boolean;
+  includeExceptionName: boolean;
+}
 
 export const exceptionHandler = (config: ExceptionHandlerConfig) => ({
   onError: async (handler): Promise<any> => {
