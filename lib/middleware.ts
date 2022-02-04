@@ -1,8 +1,15 @@
-import { HttpException } from './exceptions/HttpException';
-import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import { formatResponse } from './utils/formatResponse';
+import { ExceptionHandlerConfig } from './types/common';
 
-export const exceptionHandler = ({ logger = console, level = 'error' } = {}) => ({
+export const exceptionHandler = (config: ExceptionHandlerConfig) => ({
   onError: async (handler): Promise<any> => {
+    const {
+      logger = console,
+      level = 'error',
+      includeTimestamp = false,
+      includeExceptionName = false,
+    } = config;
+
     const { error } = handler;
 
     if (typeof logger[level] === 'function') {
@@ -11,22 +18,10 @@ export const exceptionHandler = ({ logger = console, level = 'error' } = {}) => 
       });
     }
 
-    if (error instanceof HttpException) {
-      const { statusCode, message } = error;
-      handler.response = {
-        ...handler.response,
-        statusCode,
-        body: JSON.stringify({ status: statusCode, message }),
-      };
-    } else {
-      handler.response = {
-        ...handler.response,
-        statusCode: 500,
-        body: JSON.stringify({
-          status: StatusCodes.INTERNAL_SERVER_ERROR,
-          message: ReasonPhrases.INTERNAL_SERVER_ERROR,
-        }),
-      };
-    }
+    handler.response = formatResponse(
+      { includeTimestamp, includeExceptionName },
+      handler.response,
+      error
+    );
   },
 });
