@@ -1,10 +1,10 @@
 import { formatResponse } from './utils/formatResponse';
 
 interface ExceptionHandlerConfig {
-  logger: any | Console;
-  level: string;
-  includeTimestamp: boolean;
-  includeExceptionName: boolean;
+  logger?: any | Console;
+  level?: string;
+  includeTimestamp?: boolean;
+  includeExceptionName?: boolean;
 }
 
 export const exceptionHandler = (config: ExceptionHandlerConfig) => ({
