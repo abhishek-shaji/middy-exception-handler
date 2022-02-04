@@ -1,6 +1,6 @@
 {
   "name": "middy-exception-handler",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Exception handler for Middy",
   "source": "lib/exports.ts",
   "main": "dist/main.js",

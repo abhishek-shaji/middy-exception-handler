@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.4.0...v1.4.1) (2022-02-04)
+
+
+### Bug Fixes
+
+* **add-deatils:** fixing issue with type definition ([b4d3a8e](https://github.com/abhishek-shaji/middy-exception-handler/commit/b4d3a8e354b9f9906e3917559ffd1eb138c60de3))
+
 # [1.4.0](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.3.0...v1.4.0) (2022-02-04)
 
 
