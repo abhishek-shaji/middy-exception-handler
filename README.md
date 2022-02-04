@@ -43,7 +43,7 @@ const handler = middy(() => {
   throw new NotFoundException();
 });
 
-middy()
+handler
   .use(exceptionHandler());
 
 // when Lambda runs the handler...
@@ -103,6 +103,42 @@ response:
 ```json
 {
   "status": 401,
+  "message": "A custom message"
+}
+```
+
+### Include additional details in response
+```javascript
+const handler = middy(() => {
+  throw new UnauthorizedException('A custom message', { abcd: 'efg' });
+});
+```
+
+response:
+```json
+{
+  "status": 401,
+  "message": "A custom message",
+  "details": {
+    "abcd": "efg"
+  }
+}
+```
+
+### Exception name and timestamp
+You can also configure to include a timestamp and exception name to the response:
+
+```javascript
+handler
+  .use(exceptionHandler({ includeTimestamp: true, includeExceptionName: true }));
+```
+
+response:
+```json
+{
+  "timestamp": "2022-02-04T14:41:22.457Z",
+  "status": 401,
+  "exception": "BadRequestException",
   "message": "A custom message"
 }
 ```
