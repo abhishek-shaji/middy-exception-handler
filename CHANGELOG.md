@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.3.0...v1.4.0) (2022-02-04)
+
+
+### Features
+
+* **add-details:** add details property to response ([e9c6160](https://github.com/abhishek-shaji/middy-exception-handler/commit/e9c61606d7b2a59ae555e589689cfa38a67d838c))
+
 # [1.3.0](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.2.0...v1.3.0) (2022-02-03)
 
 
