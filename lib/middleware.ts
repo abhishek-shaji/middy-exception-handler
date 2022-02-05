@@ -7,27 +7,27 @@ interface ExceptionHandlerConfig {
   includeExceptionName?: boolean;
 }
 
-export const exceptionHandler = (config: ExceptionHandlerConfig) => ({
-  onError: async (handler): Promise<any> => {
-    const {
-      logger = console,
-      level = 'error',
-      includeTimestamp = false,
-      includeExceptionName = false,
-    } = config;
+export const exceptionHandler =
+  ({
+     logger = console,
+     level = 'error',
+     includeTimestamp = false,
+     includeExceptionName = false
+   }: ExceptionHandlerConfig = {}) => ({
+    onError: async (handler): Promise<any> => {
 
-    const { error } = handler;
+      const { error } = handler;
 
-    if (typeof logger[level] === 'function') {
-      logger[level]({
-        error,
-      });
+      if (typeof logger[level] === 'function') {
+        logger[level]({
+          error
+        });
+      }
+
+      handler.response = formatResponse(
+        { includeTimestamp, includeExceptionName },
+        handler.response,
+        error
+      );
     }
-
-    handler.response = formatResponse(
-      { includeTimestamp, includeExceptionName },
-      handler.response,
-      error
-    );
-  },
-});
+  });
