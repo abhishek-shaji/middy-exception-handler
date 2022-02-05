@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.4.3...v1.4.4) (2022-02-05)
+
+
+### Bug Fixes
+
+* **logger-undefined-issue:** fixing  logger undefined issue when passing no config object ([a7647ff](https://github.com/abhishek-shaji/middy-exception-handler/commit/a7647ff285384977a2ad5c9763dbad527416b39a))
+
 ## [1.4.3](https://github.com/abhishek-shaji/middy-exception-handler/compare/v1.4.2...v1.4.3) (2022-02-04)
 
 
